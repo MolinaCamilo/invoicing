@@ -16,8 +16,17 @@ namespace Facturacion
 
         [OperationContract]
         string GetData(int value);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="Password"></param>
+        /// <param name="TipoDocumentoEmpresa"></param>
+        /// <param name="NitEmpresa"></param>
+        /// <param name="entrada"></param>
+        /// <param name="Origen"></param>
+        /// <returns></returns>
         [OperationContract]
-        Response RegistrarFactura(Request request);
+        DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen);
     }
 }

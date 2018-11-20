@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOClienteEntrada.cs" />
+    <Compile Include="DTODocumentoEntrada.cs" />
+    <Compile Include="DTODocumentoSalida.cs" />
+    <Compile Include="DTOImpuestosEntrada.cs" />
+    <Compile Include="DTOReferenciasEntrada.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Response.cs" />

@@ -17,10 +17,22 @@ namespace Facturacion
             return string.Format("You entered: {0}", value);
         }
 
-        public Response RegistrarFactura(Request request)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="Password"></param>
+        /// <param name="TipoDocumentoEmpresa"></param>
+        /// <param name="NitEmpresa"></param>
+        /// <param name="entrada"></param>
+        /// <param name="Origen"></param>
+        /// <returns></returns>
+        public DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen)
         {
-            FacturacionBusiness facturacion = new FacturacionBusiness();
-            return facturacion.RegistrarFactura(request);
+            Request request = new Request(user, Password,TipoDocumentoEmpresa, NitEmpresa, entrada, Origen);
+            return new FacturacionBusiness(request).RegistrarFactura();
         }
+
+        
     }
 }
