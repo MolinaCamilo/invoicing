@@ -15,11 +15,17 @@ namespace Facturacion.Entity
         public DTODocumentoEntrada entrada { get; set; }
         public string Origen { get; set; }
 
+        public Request()
+        {
+
+        }
+
         public Request(string user, string password, string tipoDocumentoEmpresa, string nitEmpresa, DTODocumentoEntrada entrada, string origen)
         {
             this.user = user;
             this.Password = password;
             this.TipoDocumentoEmpresa = tipoDocumentoEmpresa;
+            this.NitEmpresa = nitEmpresa;
             this.entrada = entrada;
             this.Origen = origen;
         }
@@ -28,11 +34,17 @@ namespace Facturacion.Entity
         {
             respuesta = "";
             respuesta = string.IsNullOrEmpty(this.user) ? "Parametro user obligatorio" : "";
+            if (!string.IsNullOrEmpty(respuesta)) return;
             respuesta = string.IsNullOrEmpty(this.Password) ? "Parametro Password obligatorio" : "";
+            if (!string.IsNullOrEmpty(respuesta)) return;
             respuesta = string.IsNullOrEmpty(this.TipoDocumentoEmpresa) ? "Parametro TipoDocumentoEmpresa obligatorio" : "";
+            if (!string.IsNullOrEmpty(respuesta)) return;
             respuesta = string.IsNullOrEmpty(this.NitEmpresa) ? "Parametro NitEmpresa obligatorio" : "";
+            if (!string.IsNullOrEmpty(respuesta)) return;
             respuesta = string.IsNullOrEmpty(this.Origen) ? "Parametro Origen obligatorio" : "";
-
+            if (!string.IsNullOrEmpty(respuesta)) return;
+            respuesta = this.entrada == null ? "Parametro DTODocumentoEntrada obligatorio" : "";
+            if (!string.IsNullOrEmpty(respuesta)) return;
         }
     }
 }

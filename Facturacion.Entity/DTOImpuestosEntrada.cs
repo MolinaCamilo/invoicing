@@ -13,5 +13,11 @@ namespace Facturacion.Entity
         public double PorTarifa { get; set; }
         public double VlrBase { get; set; }
         public double VlrImpuesto { get; set; }
+
+        public void ValidarObligatorios(out string respuesta)
+        {
+            respuesta = "";
+            respuesta = string.IsNullOrEmpty(this.TipoImpuesto) ? "Parametro TipoImpuesto obligatorio" : "";
+        }
     }
 }

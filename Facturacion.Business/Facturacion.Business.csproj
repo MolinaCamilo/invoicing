@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="FacturacionBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Facturacion.DataAccess\Facturacion.DataAccess.csproj">
