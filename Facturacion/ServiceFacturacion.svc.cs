@@ -32,11 +32,11 @@ namespace Facturacion
         {
             string user = "camilo";
             string Password = "paswordcamilo";
-            string TipoDocumentoEmpresa = "TIpDocEMp";
+            string TipoDocumentoEmpresa = "1";
             string NitEmpresa = "nitEmpresa";
             DTOClienteEntrada cliente = new DTOClienteEntrada
             {
-                TipoDocumentoCliente = "CC",
+                TipoDocumentoCliente = "13",
                 DocumentoCliente = "1051954972",
                 PrimerNombre = "José",
                 SegundoNombre = "Camilo",
@@ -47,22 +47,22 @@ namespace Facturacion
                 Email = "molina.josecamilo@gmail.com",
                 Ciudad = "Tunja",
                 Departamento = "Boyaca",
-                TipoPersona = "Hombre",
-                TipoRegimen = "Regimen",
-                Pais = "Colombia",
+                TipoPersona = "1",
+                TipoRegimen = "0",
+                Pais = "co",
                 ObligadoFacturarElectro = false
             };
 
             DTOImpuestosEntrada dtoImp1 = new DTOImpuestosEntrada
             {
-                TipoImpuesto = "imp1",
+                TipoImpuesto = "01",
                 PorTarifa = 10,
                 VlrBase = 12000,
                 VlrImpuesto = 10000
             };
             DTOImpuestosEntrada dtoImp2 = new DTOImpuestosEntrada
             {
-                TipoImpuesto = "imp2",
+                TipoImpuesto = "02",
                 PorTarifa = 20,
                 VlrBase = 22000,
                 VlrImpuesto = 20000
@@ -108,14 +108,14 @@ namespace Facturacion
                 VlrNeto = 10000,
                 DiasVence = 3, //Puede ser null
                 PorInteresMora = 0.0, //puede ser null
-                MedioPago = "Efectivo",
+                MedioPago = null,
                 Usuario = "User1",
                 Nota = "Nota",
                 Cliente = cliente,
                 Impuestos = listImpuesto,
                 Referencias = referencias,
-                ConceptoNotaCredito = "Concepto credito",
-                ConceptoNotaDebito = "Concepto nota debito",
+                ConceptoNotaCredito = "2",
+                ConceptoNotaDebito = "1",
                 DocumentoFacturaReferencia = "768",
             };
             string Origen = "prueba";

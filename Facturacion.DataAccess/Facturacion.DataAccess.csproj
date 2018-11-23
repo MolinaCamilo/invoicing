@@ -53,10 +53,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="DaoFacturacion.cs" />
+    <Compile Include="DataTableUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facturacion.Entity\Facturacion.Entity.csproj">
+      <Project>{e1e70c32-0107-4757-8fdc-1158f707d0c4}</Project>
+      <Name>Facturacion.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
