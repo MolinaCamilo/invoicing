@@ -10,7 +10,7 @@ namespace Facturacion.Entity
     {
 
         public string TipoDocumentoElectronico { get; set; }
-        public int? Resolucion { get; set; } // puede ser null
+        public string Resolucion { get; set; } // puede ser null
         public string Prefijo { get; set; } // puede ser null
         public string Documento { get; set; }
         public DateTime Fecha { get; set; }
@@ -30,6 +30,7 @@ namespace Facturacion.Entity
         public string ConceptoNotaCredito { get; set; } // puede ser null
         public string ConceptoNotaDebito { get; set; } // puede ser null
         public string DocumentoFacturaReferencia { get; set; } // puede ser null
+        public string CodigoMoneda { get; set; }
 
         public void ValidarObligatorios(out string respuesta)
         {

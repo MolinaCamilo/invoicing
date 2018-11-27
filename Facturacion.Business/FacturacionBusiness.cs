@@ -75,8 +75,18 @@ namespace Facturacion.Business
                     if (ValidarDataOpcional(out resultado, parametros))
                     {
                         var factura = Utilidades.SerializarObjetoAStringXml(this.Request);
-                        dao.RegistrarFacura(factura);
-                        return ArmarRespuesta("200", "Exitoso", "Exitoso", false);
+                        var respuesta = dao.RegistrarFacura(factura);
+                        if(respuesta != null && respuesta.Doc_ID != 0)
+                        {
+                            this.cufe = respuesta.Doc_Cufe;
+                            this.idDocumento = respuesta.Doc_ID;
+                            return ArmarRespuesta("200", "Exitoso", "Exitoso", true);
+                        }
+                        else
+                        {
+                            return ArmarRespuesta("305", respuesta.Doc_Cufe, respuesta.Doc_Cufe, false);
+                        }
+                        
                     }
                     else
                     {
@@ -104,7 +114,7 @@ namespace Facturacion.Business
         {
             resultado = "";
             //TipoDocumentoEmpresa Obligatorio
-            resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentofactura") && p.Id.Equals(this.Request.TipoDocumentoEmpresa)).FirstOrDefault() == null ? "Parametro TipoDocumentoEmpresa no valido" : "";
+            resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentoempresa") && p.Id.Equals(this.Request.TipoDocumentoEmpresa)).FirstOrDefault() == null ? "Parametro TipoDocumentoEmpresa no valido" : "";
             if (!string.IsNullOrEmpty(resultado)) return false;
             //TipoDocumento Obligatorio
             resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentopersona") && p.Id.Equals(this.Request.entrada.Cliente.TipoDocumentoCliente)).FirstOrDefault() == null ? "Parametro TipoDocumentoCliente no valido" : "";

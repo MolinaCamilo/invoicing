@@ -13,10 +13,11 @@ namespace Facturacion.DataAccess
     public class DaoFacturacion : ConexionDB
     {
 
-        public void RegistrarFacura(string xml)
+        public ResponseDocInvoiceRegistrar RegistrarFacura(string xml)
         {
             Database vDataBase = this.getDB();
-            using (DbCommand vDbCommand = vDataBase.GetStoredProcCommand("[dbo].[prueba]"))
+            List<ResponseDocInvoiceRegistrar> respuesta = new List<ResponseDocInvoiceRegistrar>();
+            using (DbCommand vDbCommand = vDataBase.GetStoredProcCommand("[dbo].[PA_DocInvoiceRegistrarWS]"))
             {
                 try
                 {
@@ -25,7 +26,11 @@ namespace Facturacion.DataAccess
 
                     if (vDs.Tables.Count > 0)
                     {
-                        //vListReconocimientos = vDs.Tables[0].DataTableToList<Reconocimiento>();
+                        respuesta = vDs.Tables[0].DataTableToList<ResponseDocInvoiceRegistrar>();
+                        if (respuesta.Count > 0)
+                        {
+                            return respuesta[0];
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -38,6 +43,7 @@ namespace Facturacion.DataAccess
                     vDbCommand.Connection.Dispose();
                 }
             }
+            return null;
         }
 
         public List<Parametro> ConsultarParametros()

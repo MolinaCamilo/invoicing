@@ -32,8 +32,8 @@ namespace Facturacion
         {
             string user = "camilo";
             string Password = "paswordcamilo";
-            string TipoDocumentoEmpresa = "1";
-            string NitEmpresa = "nitEmpresa";
+            string TipoDocumentoEmpresa = "22";
+            string NitEmpresa = "6576787";
             DTOClienteEntrada cliente = new DTOClienteEntrada
             {
                 TipoDocumentoCliente = "13",
@@ -73,6 +73,7 @@ namespace Facturacion
 
             DTOReferenciasEntrada ref1 = new DTOReferenciasEntrada
             {
+                Identificador = 1,
                 Codigo = "0001",
                 Descripcion = "desc 1",
                 Cantidad = 30,
@@ -83,6 +84,7 @@ namespace Facturacion
             };
             DTOReferenciasEntrada ref2 = new DTOReferenciasEntrada
             {
+                Identificador = 2,
                 Codigo = "0001",
                 Descripcion = "Desc 2",
                 Cantidad = 30,
@@ -97,8 +99,8 @@ namespace Facturacion
             DTODocumentoEntrada entrada = new DTODocumentoEntrada
             {
                 TipoDocumentoElectronico = "tipDocElect",
-                Resolucion = 1212, //Puede ser null
-                Prefijo = "Pref",
+                Resolucion = "123456879ABCSD", //Puede ser null
+                Prefijo = "MP",
                 Documento = "Doc",
                 Fecha = DateTime.Now,
                 Hora = DateTime.Now,
@@ -117,6 +119,7 @@ namespace Facturacion
                 ConceptoNotaCredito = "2",
                 ConceptoNotaDebito = "1",
                 DocumentoFacturaReferencia = "768",
+                CodigoMoneda = "COP"
             };
             string Origen = "prueba";
             Request request = new Request(user, Password, TipoDocumentoEmpresa, NitEmpresa, entrada, Origen);

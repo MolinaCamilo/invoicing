@@ -8,6 +8,7 @@ namespace Facturacion.Entity
 {
     public class DTOReferenciasEntrada
     {
+        public int Identificador { get; set; }
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public double Cantidad { get; set; }
