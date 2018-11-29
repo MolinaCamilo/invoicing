@@ -74,9 +74,34 @@ namespace Facturacion.Business
                 {
                     if (ValidarDataOpcional(out resultado, parametros))
                     {
+                        ResponseDocInvoiceRegistrar respuesta = null;
+                        int result = -1;
+                        if(!int.TryParse(this.Request.entrada.TipoDocumentoElectronico, out result))
+                            return ArmarRespuesta("305", "Parametro invalido", "Parametro TipoDocumentoEmpresa no valido", false);
                         var factura = Utilidades.SerializarObjetoAStringXml(this.Request);
-                        var respuesta = dao.RegistrarFacura(factura);
-                        if(respuesta != null && respuesta.Doc_ID != 0)
+                        if (result == Convert.ToInt32(EnumFactura.TipoFactura.FacturaVenta))
+                        {
+                            if(!ValicacionesFacturaVenta(out resultado, dao))
+                                return ArmarRespuesta("305", "Parametro invalido", resultado, false);
+                            respuesta = dao.RegistrarFacura(factura);
+                        }
+                            
+                        else if (result == Convert.ToInt32(EnumFactura.TipoFactura.NotaDebito))
+                        {
+                            if (!ValidacionesNotaDebito(out resultado, dao))
+                                return ArmarRespuesta("305", "Parametro invalido", resultado, false);
+                            respuesta = dao.RegistrarNotaDebito(factura);
+                        }
+                        else if (result == Convert.ToInt32(EnumFactura.TipoFactura.NotaCredito))
+                        {
+                            if (!ValidacionesNotaCredito(out resultado, dao))
+                                return ArmarRespuesta("305", "Parametro invalido", resultado, false);
+                            respuesta = dao.RegistrarNotaCredito(factura);
+                        }
+                        else
+                            return ArmarRespuesta("305", "Parametro invalido", "Parametro TipoDocumentoEmpresa no valido", false);
+
+                        if (respuesta != null && respuesta.Doc_ID != 0)
                         {
                             this.cufe = respuesta.Doc_Cufe;
                             this.idDocumento = respuesta.Doc_ID;
@@ -115,6 +140,9 @@ namespace Facturacion.Business
             resultado = "";
             //TipoDocumentoEmpresa Obligatorio
             resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentoempresa") && p.Id.Equals(this.Request.TipoDocumentoEmpresa)).FirstOrDefault() == null ? "Parametro TipoDocumentoEmpresa no valido" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+            //TipoDocumentoElectronico Obligatorio
+            resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentoelectronico") && p.Id.Equals(this.Request.entrada.TipoDocumentoElectronico)).FirstOrDefault() == null ? "Parametro TipoDocumentoElectronico no valido" : "";
             if (!string.IsNullOrEmpty(resultado)) return false;
             //TipoDocumento Obligatorio
             resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipodocumentopersona") && p.Id.Equals(this.Request.entrada.Cliente.TipoDocumentoCliente)).FirstOrDefault() == null ? "Parametro TipoDocumentoCliente no valido" : "";
@@ -161,6 +189,41 @@ namespace Facturacion.Business
                 resultado = parametros.Where(p => p.Tipo.ToLower().Equals("pais") && p.Id.ToLower().Equals(this.Request.entrada.Cliente.Pais.ToLower())).FirstOrDefault() == null ? "Parametro Pais no valido" : "";
                 if (!string.IsNullOrEmpty(resultado)) return false;
             }
+            return true;
+        }
+
+        private bool ValicacionesFacturaVenta(out string resultado, DaoFacturacion dao)
+        {
+            resultado = dao.ExisteDocumento(this.Request.NitEmpresa, this.Request.entrada.Documento) == true ? "El numero de documeto ya esta registrado" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+
+            //return ArmarRespuesta("305", "Número de documento invalido", "El numero de documeto ya esta registrado", false);
+            return true;
+        }
+
+        private bool ValidacionesNotaDebito(out string resultado, DaoFacturacion dao)
+        {
+            resultado = !string.Equals(this.Request.entrada.Documento, EnumFactura.GetStringValue(EnumFactura.TipoFactura.NotaDebito), StringComparison.InvariantCultureIgnoreCase) ? "Parametro Documento no valido para Nota Debito" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+            resultado = string.IsNullOrEmpty(this.Request.entrada.DocumentoFacturaReferencia) ? "Parametro DocumentoFacturaReferencia obligatorio" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+            resultado = dao.ExisteDocumento(this.Request.NitEmpresa, this.Request.entrada.DocumentoFacturaReferencia) == false ? "El numero DocumentoFacturaReferencia no esta registrado" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+
+            //return ArmarRespuesta("305", "Número de documento invalido", "El numero de documeto ya esta registrado", false);
+            return true;
+        }
+
+        private bool ValidacionesNotaCredito(out string resultado, DaoFacturacion dao)
+        {
+            resultado = !string.Equals(this.Request.entrada.Documento, EnumFactura.GetStringValue(EnumFactura.TipoFactura.NotaCredito), StringComparison.InvariantCultureIgnoreCase) ? "Parametro Documento no valido para Nota Credito" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+            resultado = string.IsNullOrEmpty(this.Request.entrada.DocumentoFacturaReferencia) ? "Parametro DocumentoFacturaReferencia obligatorio" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+            resultado = dao.ExisteDocumento(this.Request.NitEmpresa, this.Request.entrada.DocumentoFacturaReferencia) == false ? "El numero DocumentoFacturaReferencia no esta registrado" : "";
+            if (!string.IsNullOrEmpty(resultado)) return false;
+
+            //return ArmarRespuesta("305", "Número de documento invalido", "El numero de documeto ya esta registrado", false);
             return true;
         }
     }

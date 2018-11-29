@@ -28,11 +28,11 @@ namespace Facturacion
         /// <param name="Origen"></param>
         /// <returns></returns>
         //public DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen)
-        public DTODocumentoSalida RegistrarFactura()
+        public DTODocumentoSalida RegistrarFactura(string numDoc, string TipoDocumentoEmpresa, string TipoDocumentoElectronico, string docRef)
         {
             string user = "camilo";
             string Password = "paswordcamilo";
-            string TipoDocumentoEmpresa = "22";
+            //string TipoDocumentoEmpresa = "22";
             string NitEmpresa = "6576787";
             DTOClienteEntrada cliente = new DTOClienteEntrada
             {
@@ -98,10 +98,10 @@ namespace Facturacion
             referencias.Add(ref2);
             DTODocumentoEntrada entrada = new DTODocumentoEntrada
             {
-                TipoDocumentoElectronico = "tipDocElect",
-                Resolucion = "123456879ABCSD", //Puede ser null
-                Prefijo = "MP",
-                Documento = "Doc",
+                TipoDocumentoElectronico = TipoDocumentoElectronico,
+                Resolucion = "987654321", //Puede ser null
+                Prefijo = "CM",
+                Documento = numDoc,
                 Fecha = DateTime.Now,
                 Hora = DateTime.Now,
                 VlrSubtotal = 12000,
@@ -118,8 +118,7 @@ namespace Facturacion
                 Referencias = referencias,
                 ConceptoNotaCredito = "2",
                 ConceptoNotaDebito = "1",
-                DocumentoFacturaReferencia = "768",
-                CodigoMoneda = "COP"
+                DocumentoFacturaReferencia = docRef
             };
             string Origen = "prueba";
             Request request = new Request(user, Password, TipoDocumentoEmpresa, NitEmpresa, entrada, Origen);

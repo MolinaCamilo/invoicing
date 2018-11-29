@@ -46,6 +46,7 @@
     <Compile Include="DTODocumentoSalida.cs" />
     <Compile Include="DTOImpuestosEntrada.cs" />
     <Compile Include="DTOReferenciasEntrada.cs" />
+    <Compile Include="EnumFactura.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

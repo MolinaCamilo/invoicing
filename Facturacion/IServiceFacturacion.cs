@@ -27,7 +27,7 @@ namespace Facturacion
         /// <param name="Origen"></param>
         /// <returns></returns>
         [OperationContract]
-        DTODocumentoSalida RegistrarFactura();
+        DTODocumentoSalida RegistrarFactura(string numDoc, string TipoDocumentoEmpresa, string TipoDocumentoElectronico, string docRef);
         //DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen);
 
     }
