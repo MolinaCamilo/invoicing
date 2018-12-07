@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Facturacion.DataAccess;
 using Facturacion.Entity;
+using Log.Auditores;
+using Log.Log4Net;
+using System.Reflection;
 
 namespace Facturacion.Business
 {
     public class FacturacionBusiness
     {
-
+        private static readonly IFacturacionAuditor _auditor = AdministradorLog4Net.GetAuditor(MethodBase.GetCurrentMethod().DeclaringType);
         private Request Request;
         private string cufe = "";
         private int idDocumento = 0;
@@ -76,27 +79,30 @@ namespace Facturacion.Business
                     {
                         ResponseDocInvoiceRegistrar respuesta = null;
                         int result = -1;
-                        if(!int.TryParse(this.Request.entrada.TipoDocumentoElectronico, out result))
+                        if (!int.TryParse(this.Request.entrada.TipoDocumentoElectronico, out result))
                             return ArmarRespuesta("305", "Parametro invalido", "Parametro TipoDocumentoEmpresa no valido", false);
                         var factura = Utilidades.SerializarObjetoAStringXml(this.Request);
+                        _auditor.Info("Request servicio "+factura);
                         if (result == Convert.ToInt32(EnumFactura.TipoFactura.FacturaVenta))
                         {
-                            if(!ValicacionesFacturaVenta(out resultado, dao))
+                            if (!ValicacionesFacturaVenta(out resultado, dao))
                                 return ArmarRespuesta("305", "Parametro invalido", resultado, false);
                             respuesta = dao.RegistrarFacura(factura);
+                            _auditor.Info("Response RegistrarFacura" + respuesta.Doc_ID + " - "+respuesta.Doc_Cufe);
                         }
-                            
                         else if (result == Convert.ToInt32(EnumFactura.TipoFactura.NotaDebito))
                         {
                             if (!ValidacionesNotaDebito(out resultado, dao))
                                 return ArmarRespuesta("305", "Parametro invalido", resultado, false);
                             respuesta = dao.RegistrarNotaDebito(factura);
+                            _auditor.Info("Response RegistrarFacura" + respuesta.Doc_ID + " - " + respuesta.Doc_Cufe);
                         }
                         else if (result == Convert.ToInt32(EnumFactura.TipoFactura.NotaCredito))
                         {
                             if (!ValidacionesNotaCredito(out resultado, dao))
                                 return ArmarRespuesta("305", "Parametro invalido", resultado, false);
                             respuesta = dao.RegistrarNotaCredito(factura);
+                            _auditor.Info("Response RegistrarFacura" + respuesta.Doc_ID + " - " + respuesta.Doc_Cufe);
                         }
                         else
                             return ArmarRespuesta("305", "Parametro invalido", "Parametro TipoDocumentoEmpresa no valido", false);
@@ -111,7 +117,7 @@ namespace Facturacion.Business
                         {
                             return ArmarRespuesta("305", respuesta.Doc_Cufe, respuesta.Doc_Cufe, false);
                         }
-                        
+
                     }
                     else
                     {
@@ -125,6 +131,11 @@ namespace Facturacion.Business
             }
             catch (Exception ex)
             {
+                _auditor.Error(new ExcepcionLogable
+                {
+                    Mensaje = ex.Message,
+                    StackTrace = ex.StackTrace
+                });
                 return ArmarRespuesta("305", "Datos Inconsistentes o incompletos", "Datos Inconsistentes o incompletos", false);
             }
         }
@@ -154,7 +165,7 @@ namespace Facturacion.Business
             resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tiporegimen") && p.Id.Equals(this.Request.entrada.Cliente.TipoRegimen)).FirstOrDefault() == null ? "Parametro TipoRegimen no valido" : "";
             if (!string.IsNullOrEmpty(resultado)) return false;
             //TipoImpuesto Obligatorio
-            foreach(var impuesto in this.Request.entrada.Impuestos)
+            foreach (var impuesto in this.Request.entrada.Impuestos)
             {
                 resultado = parametros.Where(p => p.Tipo.ToLower().Equals("tipoimpuesto") && p.Id.Equals(impuesto.TipoImpuesto)).FirstOrDefault() == null ? "Parametro TipoImpuesto no valido" : "";
                 if (!string.IsNullOrEmpty(resultado)) return false;

@@ -9,13 +9,10 @@ using Facturacion.Entity;
 
 namespace Facturacion
 {
-    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IService1" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IServiceFacturacion
     {
 
-        [OperationContract]
-        string GetData(int value);
         /// <summary>
         /// 
         /// </summary>
@@ -27,8 +24,8 @@ namespace Facturacion
         /// <param name="Origen"></param>
         /// <returns></returns>
         [OperationContract]
-        DTODocumentoSalida RegistrarFactura(string numDoc, string TipoDocumentoEmpresa, string TipoDocumentoElectronico, string docRef);
-        //DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen);
+        //DTODocumentoSalida RegistrarFactura(string numDoc, string TipoDocumentoEmpresa, string TipoDocumentoElectronico, string docRef);
+        DTODocumentoSalida RegistrarFactura(string user, string Password, string TipoDocumentoEmpresa, string NitEmpresa, DTODocumentoEntrada entrada, string Origen);
 
     }
 }

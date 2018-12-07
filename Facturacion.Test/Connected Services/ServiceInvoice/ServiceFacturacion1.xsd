@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.0.213:1905/ServiceFacturacion.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Facturacion.Entity" />
+  <xs:element name="RegistrarFactura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="user" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TipoDocumentoEmpresa" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NitEmpresa" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Facturacion.Entity" minOccurs="0" name="entrada" nillable="true" type="q1:DTODocumentoEntrada" />
+        <xs:element minOccurs="0" name="Origen" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarFacturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Facturacion.Entity" minOccurs="0" name="RegistrarFacturaResult" nillable="true" type="q2:DTODocumentoSalida" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

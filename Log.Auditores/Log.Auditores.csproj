@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC1027E6-CC72-42FB-B37E-F54D204CFD59}</ProjectGuid>
+    <ProjectGuid>{DB73BC32-C08E-40A9-8283-ABA8BD84507A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Facturacion.Business</RootNamespace>
-    <AssemblyName>Facturacion.Business</AssemblyName>
+    <RootNamespace>Log.Auditores</RootNamespace>
+    <AssemblyName>Log.Auditores</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,27 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FacturacionBusiness.cs" />
+    <Compile Include="ExcepcionLogable.cs" />
+    <Compile Include="IFacturacionAuditor.cs" />
+    <Compile Include="ILogable.cs" />
+    <Compile Include="MensajeLogable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilidades.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Facturacion.DataAccess\Facturacion.DataAccess.csproj">
-      <Project>{d97e7c66-231d-410b-82bc-eac731c460cd}</Project>
-      <Name>Facturacion.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Facturacion.Entity\Facturacion.Entity.csproj">
-      <Project>{e1e70c32-0107-4757-8fdc-1158f707d0c4}</Project>
-      <Name>Facturacion.Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Log.Auditores\Log.Auditores.csproj">
-      <Project>{db73bc32-c08e-40a9-8283-aba8bd84507a}</Project>
-      <Name>Log.Auditores</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Log.Log4Net\Log.Log4Net.csproj">
-      <Project>{76283c29-587b-4840-9f6d-27ca8d68f3f8}</Project>
-      <Name>Log.Log4Net</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

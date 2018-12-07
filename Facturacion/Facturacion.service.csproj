@@ -31,6 +31,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,7 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\Log4Net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\dom\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\Log4Net\MongoDB.Bson.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ServiceFacturacion.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServiceFacturacion.svc.cs">
@@ -75,6 +88,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -90,6 +104,14 @@
     <ProjectReference Include="..\Facturacion.Entity\Facturacion.Entity.csproj">
       <Project>{e1e70c32-0107-4757-8fdc-1158f707d0c4}</Project>
       <Name>Facturacion.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log.Auditores\Log.Auditores.csproj">
+      <Project>{db73bc32-c08e-40a9-8283-aba8bd84507a}</Project>
+      <Name>Log.Auditores</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log.Log4Net\Log.Log4Net.csproj">
+      <Project>{76283c29-587b-4840-9f6d-27ca8d68f3f8}</Project>
+      <Name>Log.Log4Net</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

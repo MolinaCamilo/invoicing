@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e0cc9b2c-8044-4ce3-b71e-7642bb434de8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.213:1905/ServiceFacturacion.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceFacturacion.xsd" MetadataType="Schema" ID="137b2d54-97a2-49f5-abaa-680f9581028a" SourceId="1" SourceUrl="http://192.168.0.213:1905/ServiceFacturacion.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceFacturacion.wsdl" MetadataType="Wsdl" ID="1ce2a889-99f2-4bea-8c3d-98104b925b5e" SourceId="1" SourceUrl="http://192.168.0.213:1905/ServiceFacturacion.svc?wsdl" />
+    <MetadataFile FileName="ServiceFacturacion1.xsd" MetadataType="Schema" ID="3d1e17c1-fef3-40f5-9171-89751ed14a58" SourceId="1" SourceUrl="http://192.168.0.213:1905/ServiceFacturacion.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceFacturacion2.xsd" MetadataType="Schema" ID="0483fa3e-88d1-4141-a7c0-f7304c963cd2" SourceId="1" SourceUrl="http://192.168.0.213:1905/ServiceFacturacion.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceFacturacion.disco" MetadataType="Disco" ID="c9630b55-7810-4a75-8d8d-f2c996998d74" SourceId="1" SourceUrl="http://192.168.0.213:1905/ServiceFacturacion.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

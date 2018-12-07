@@ -11,6 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturacion.Entity", "Factu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturacion.Business", "Facturacion.Business\Facturacion.Business.csproj", "{AC1027E6-CC72-42FB-B37E-F54D204CFD59}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Log", "Log", "{9128584A-E58B-4334-9075-CD0BCE8548F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log.Auditores", "Log.Auditores\Log.Auditores.csproj", "{DB73BC32-C08E-40A9-8283-ABA8BD84507A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Log.Log4Net", "Log.Log4Net\Log.Log4Net.csproj", "{76283C29-587B-4840-9F6D-27CA8D68F3F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facturacion.Test", "Facturacion.Test\Facturacion.Test.csproj", "{8974F627-98D3-4D37-8ECF-B7BFDEC7003D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +41,25 @@ Global
 		{AC1027E6-CC72-42FB-B37E-F54D204CFD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC1027E6-CC72-42FB-B37E-F54D204CFD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC1027E6-CC72-42FB-B37E-F54D204CFD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB73BC32-C08E-40A9-8283-ABA8BD84507A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB73BC32-C08E-40A9-8283-ABA8BD84507A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB73BC32-C08E-40A9-8283-ABA8BD84507A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB73BC32-C08E-40A9-8283-ABA8BD84507A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76283C29-587B-4840-9F6D-27CA8D68F3F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76283C29-587B-4840-9F6D-27CA8D68F3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76283C29-587B-4840-9F6D-27CA8D68F3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76283C29-587B-4840-9F6D-27CA8D68F3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8974F627-98D3-4D37-8ECF-B7BFDEC7003D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8974F627-98D3-4D37-8ECF-B7BFDEC7003D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8974F627-98D3-4D37-8ECF-B7BFDEC7003D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8974F627-98D3-4D37-8ECF-B7BFDEC7003D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB73BC32-C08E-40A9-8283-ABA8BD84507A} = {9128584A-E58B-4334-9075-CD0BCE8548F9}
+		{76283C29-587B-4840-9F6D-27CA8D68F3F8} = {9128584A-E58B-4334-9075-CD0BCE8548F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1E6EA156-823A-4596-A308-6ED8F8CCB2DE}

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <user>camilo</user>
+   <Password>paswordcamilo</Password>
+   <TipoDocumentoEmpresa>22</TipoDocumentoEmpresa>
+   <NitEmpresa>6576787</NitEmpresa>
+   <entrada>
+      <TipoDocumentoElectronico>1</TipoDocumentoElectronico>
+      <Resolucion>987654321</Resolucion>
+      <Prefijo>CM</Prefijo>
+      <Documento>CMDoc10011</Documento>
+      <Fecha>2018-12-06T20:42:52.0494181-05:00</Fecha>
+      <Hora>2018-12-06T20:42:52.0494181-05:00</Hora>
+      <VlrSubtotal>12000</VlrSubtotal>
+      <VlrDescuento>0</VlrDescuento>
+      <VlrImpuestos>1</VlrImpuestos>
+      <VlrNeto>10000</VlrNeto>
+      <DiasVence>3</DiasVence>
+      <PorInteresMora>0</PorInteresMora>
+      <Usuario>User1</Usuario>
+      <Nota>Nota</Nota>
+      <Cliente>
+         <TipoDocumentoCliente>13</TipoDocumentoCliente>
+         <DocumentoCliente>1051954972</DocumentoCliente>
+         <PrimerNombre>José</PrimerNombre>
+         <SegundoNombre>Camilo</SegundoNombre>
+         <Apellidos>Molina Piratova</Apellidos>
+         <RazonSocial>Peresona Natural</RazonSocial>
+         <Direccion>Cra 50</Direccion>
+         <Telefono>3003877549</Telefono>
+         <Email>molina.josecamilo@gmail.com</Email>
+         <Ciudad>Tunja</Ciudad>
+         <Departamento>Boyaca</Departamento>
+         <TipoPersona>1</TipoPersona>
+         <TipoRegimen>0</TipoRegimen>
+         <Pais>co</Pais>
+         <ObligadoFacturarElectro>false</ObligadoFacturarElectro>
+      </Cliente>
+      <Impuestos>
+         <DTOImpuestosEntrada>
+            <TipoImpuesto>01</TipoImpuesto>
+            <PorTarifa>10</PorTarifa>
+            <VlrBase>12000</VlrBase>
+            <VlrImpuesto>10000</VlrImpuesto>
+         </DTOImpuestosEntrada>
+         <DTOImpuestosEntrada>
+            <TipoImpuesto>02</TipoImpuesto>
+            <PorTarifa>20</PorTarifa>
+            <VlrBase>22000</VlrBase>
+            <VlrImpuesto>20000</VlrImpuesto>
+         </DTOImpuestosEntrada>
+      </Impuestos>
+      <Referencias>
+         <DTOReferenciasEntrada>
+            <Identificador>1</Identificador>
+            <Codigo>0001</Codigo>
+            <Descripcion>desc 1</Descripcion>
+            <Cantidad>30</Cantidad>
+            <VlrUnitario>1000</VlrUnitario>
+            <PorDescuento>0</PorDescuento>
+            <VlrDescuento>0</VlrDescuento>
+            <VlrTotal>30000</VlrTotal>
+         </DTOReferenciasEntrada>
+         <DTOReferenciasEntrada>
+            <Identificador>2</Identificador>
+            <Codigo>0001</Codigo>
+            <Descripcion>Desc 2</Descripcion>
+            <Cantidad>30</Cantidad>
+            <VlrUnitario>1000</VlrUnitario>
+            <PorDescuento>0</PorDescuento>
+            <VlrDescuento>0</VlrDescuento>
+            <VlrTotal>30000</VlrTotal>
+         </DTOReferenciasEntrada>
+      </Referencias>
+      <ConceptoNotaCredito>2</ConceptoNotaCredito>
+      <ConceptoNotaDebito>1</ConceptoNotaDebito>
+   </entrada>
+   <Origen>prueba</Origen>
+</Request>
